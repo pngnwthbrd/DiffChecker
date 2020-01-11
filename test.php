@@ -20,7 +20,7 @@ if ($foo === $bar) {
 }
 ';
 
-$d = new DiffChecker();
-$d->compare($a, $b);
+$diffChecker = new DiffChecker();
+$diffChecker->compare($a, $b);
 
-echo $d->diff;
+echo $diffChecker->diff;

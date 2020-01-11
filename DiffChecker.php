@@ -27,6 +27,7 @@ class DiffChecker
                 
                 while ($line_start < $line_runner)
                         {
+                        $line_number = '<span style="padding:0 15px;background:#f0f0f0;color:c1c1c1;margin:0 5px">' . ($line_start +1) . '</span>';
                         $leftline = current($lines['left']);
                         $rightline = current($lines['right']);
                         $leftline = strip_tags($leftline);
@@ -79,13 +80,13 @@ class DiffChecker
                                 
                                 $new_leftline = '<span style="background:#FFB9B9;">' . implode(" ", $new_leftwords) . '</span>';
                                 $new_rightline = '<span style="background:#C8F9C8;">' . implode(" ", $new_rightwords) . '</span>';
-                                array_push($new_leftlines, $new_leftline);
-                                array_push($new_rightlines, $new_rightline);
+                                array_push($new_leftlines, $line_number . $new_leftline);
+                                array_push($new_rightlines, $line_number . $new_rightline);
                                 }
                         else
                                 {
-                                        array_push($new_leftlines, $leftline);
-                                        array_push($new_rightlines, $rightline);
+                                        array_push($new_leftlines, $line_number . $leftline);
+                                        array_push($new_rightlines, $line_number . $rightline);
                                 }
                           
                         next($lines['left']);
@@ -126,7 +127,7 @@ class DiffChecker
         protected function createDiffHtml($left, $right)
                 {
                 $output = '
-                <table>
+                <table width="100%">
                         <tr>
                                 <td>' . $this->createSide($left) . '</td>
                                 <td>' . $this->createSide($right) . '</td>
