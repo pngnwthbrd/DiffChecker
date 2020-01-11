@@ -1,5 +1,4 @@
 # DiffChecker
-# DiffChecker
 
 simple to use:
 ```
